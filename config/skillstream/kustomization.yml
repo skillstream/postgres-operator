@@ -1,0 +1,20 @@
+kind: Kustomization
+namespace: postgres-operator
+
+resources:
+- ../default
+
+patches:
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: pgo
+    spec:
+      template:
+        spec:
+          containers:
+          - name: operator
+            env:
+            - name: PGO_FEATURE_GATES
+              value: "OpenTelemetryLogs=false,OpenTelemetryMetrics=true"

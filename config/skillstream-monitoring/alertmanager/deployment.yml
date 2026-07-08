@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crunchy-alertmanager
+spec:
+  template:
+    spec:
+      containers:
+      - name: alertmanager
+        resources:
+          requests:
+            cpu: 1m
+          limits:
+            cpu: 50m
+            memory: 100Mi

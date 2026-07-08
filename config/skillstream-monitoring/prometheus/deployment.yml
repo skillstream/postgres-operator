@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crunchy-prometheus
+spec:
+  template:
+    spec:
+      containers:
+      - name: prometheus
+        resources:
+          requests:
+            cpu: 20m
+          limits:
+            cpu: 200m
+            memory: 500Mi
